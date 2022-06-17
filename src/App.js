@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/Home';
+import CartEmpty from './pages/CartEmpty';
+import NotFound from './pages/NotFound';
+import Cart from './pages/Cart';
+import { Route, Routes } from 'react-router-dom';
+
+// CartEmpty - страница с отсутствуем товара в корзине
+// NotFound - страница с несуществующей ссылкой на страницу
+// Pizzas - json массив с информации с пиццами
+// Pizzas.map - передача json массива в компонент Categories
+// items - хук который делает запрос на бек энд и вызывает итемс на страницу
+// isLoading - хук по загрузки скелетона на страницу
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cartempty" element={<CartEmpty />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
